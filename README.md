@@ -11,5 +11,7 @@ Create the DB:
 
 Create an external policy to point to http://<docker_host_ip>
 
+To create VMRs browse to http://<docker_host_ip>
+
 TODO: push to Docker Hub and create a docker swarm and stack option
 
