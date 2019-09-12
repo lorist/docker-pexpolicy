@@ -142,8 +142,14 @@ def new_vmr():
             # vmr.guest_pin = form.guest_pin.data
             if form.pin.data == '':
                 vmr.pin = None
+                    else:
+                        vmr.pin = form.pin.data
+                
             if form.guest_pin.data == '':
-                vmr.guest_pin = None   
+                vmr.guest_pin = None
+                else:
+                    vmr.guest_pin = form.guest_pin.data    
+                    
             vmr.is_active = form.is_active.data
             vmr.host_view = form.host_view.data
             vmr.allow_guests = form.allow_guests.data
@@ -175,8 +181,17 @@ def edit(id):
             try:
                 vmr.name = form.name.data
                 vmr.local_alias = form.local_alias.data
-                vmr.pin = form.pin.data
-                vmr.guest_pin = form.guest_pin.data
+                # vmr.pin = form.pin.data
+                # vmr.guest_pin = form.guest_pin.data
+                if form.pin.data == '':
+                    vmr.pin = None
+                else:
+                    vmr.pin = form.pin.data
+                
+                if form.guest_pin.data == '':
+                    vmr.guest_pin = None
+                else:
+                    vmr.guest_pin = form.guest_pin.data  
                 vmr.is_active = form.is_active.data
                 vmr.host_view = form.host_view.data
                 vmr.allow_guests = form.allow_guests.data
