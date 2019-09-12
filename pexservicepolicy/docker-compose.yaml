@@ -1,0 +1,12 @@
+version: '2'
+services:
+    web:
+        image: pexservicepolicy
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/web
+    	networks:
+      	    default:
+                aliases:
+                  - pg_cluster	

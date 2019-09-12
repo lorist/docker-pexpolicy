@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
+
+{% block content %}
+    <h1>New VMR</h1>
+    {% if error %}
+      <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+    <form method="post">
+
+    {{ form.csrf_token }}
+
+    {{ render_form_row([form.name, form.local_alias, form.pin, form.guest_pin], col_class_default='col-md-2') }}
+    {{ render_form_row([form.host_view]) }}
+    {{ render_form_row([form.allow_guests]) }}
+    {{ render_form_row([form.guests_can_present]) }}
+    {{ render_form_row([form.is_active]) }}
+    {{ render_form_row([form.submit]) }}
+    </form>
+{% endblock %}

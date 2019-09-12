@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pager, render_pagination %}
+
+{% block content %}
+    <h1>VMRs</h1>
+    <a href="{{ url_for('.new_vmr') }}"> New VMR </a>
+
+    {{ render_pager(pagination) }}
+    <table class="table table-striped">
+    <thead>
+    	<tr>
+    		<th>Name</th>
+    		<th>Local Alias</th>
+    		<th>Pin</th>
+    		<th>Guest Pin</th>
+    		<th>host_view</th>
+    		<th>Allow Guests</th>
+    		<th>guests_can_present</th>
+    		<th>Is Active</th>
+    	</tr>
+    </thead>
+    <tbody>
+    	{% for vmr in vmrs %}
+    	    <tr>
+    	    	<td>{{ vmr.name }}</td>
+    	    	<td>{{ vmr.local_alias }}</td>
+    	    	<td>{{ vmr.pin }}</td>
+    	    	<td>{{ vmr.guest_pin }}</td>
+    	    	<td>{{ vmr.host_view }}</td>
+    	    	<td>{% if vmr.allow_guests %}
+    	    			<i class='fas fa-circle'></i>
+    	    		{% else %}
+    	    			<i class='far fa-circle'></i>
+    	    		{% endif %}
+    	    	</td>
+    	    	<td>{% if vmr.guests_can_present %}
+    	    			<i class='fas fa-circle'></i>
+    	    		{% else %}
+    	    			<i class='far fa-circle'></i>
+    	    		{% endif %}
+    	    	</td>
+    	    	<td>{% if vmr.is_active %}
+    	    			<i class='fas fa-circle'></i>
+    	    		{% else %}
+    	    			<i class='far fa-circle'></i>
+    	    		{% endif %}
+    	    	</td>
+    	    	<td><a href="/edit/{{ vmr.id }}">Edit</a></td>
+                <td><a href="/delete/{{ vmr.id }}">Delete</a></td>
+    	    </tr>
+    	{% endfor %}
+    </tbody>
+    </table>
+    {{ render_pagination(pagination) }}
+
+{% endblock %}
